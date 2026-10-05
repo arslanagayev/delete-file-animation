@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delete file button · UI animations</title>
+  <meta name="description" content="A delete button whose trash can opens, swallows the file and closes with a bounce.">
+  <link rel="stylesheet" href="reel/theme.css">
+  <link rel="stylesheet" href="reel/reel.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="demo-page">
+    <section class="files" aria-labelledby="files-title">
+      <header class="files-head">
+        <h2 id="files-title">Recent files</h2>
+        <span class="files-count">3 files</span>
+      </header>
+
+      <ul class="file-list">
+        <li class="file" data-name="brand-guidelines.pdf">
+          <span class="file-icon pdf" aria-hidden="true">PDF</span>
+          <span class="file-meta"><b>brand-guidelines.pdf</b><small>4.8 MB · Edited 2h ago</small></span>
+          <button class="del" type="button" aria-label="Delete brand-guidelines.pdf">
+            <svg class="can" viewBox="0 0 24 24" aria-hidden="true">
+              <g class="lid"><path d="M4 6.5h16"/><path d="M9.5 6.5V4.8c0-.5.4-.8.8-.8h3.4c.4 0 .8.3.8.8v1.7"/></g>
+              <rect class="paper" x="9.6" y="2" width="4.8" height="6" rx="0.8"/>
+              <path class="body" d="M6 8.5l.9 10.3c.1.9.8 1.7 1.8 1.7h6.6c1 0 1.7-.8 1.8-1.7L18 8.5"/>
+              <path class="lines" d="M10.2 11.5v5.5M13.8 11.5v5.5"/>
+            </svg>
+            <span class="del-label">Delete</span>
+          </button>
+        </li>
+        <li class="file" data-name="landing-hero.fig">
+          <span class="file-icon fig" aria-hidden="true">FIG</span>
+          <span class="file-meta"><b>landing-hero.fig</b><small>12.1 MB · Edited yesterday</small></span>
+          <button class="del" type="button" aria-label="Delete landing-hero.fig"></button>
+        </li>
+        <li class="file" data-name="q3-report.xlsx">
+          <span class="file-icon xls" aria-hidden="true">XLS</span>
+          <span class="file-meta"><b>q3-report.xlsx</b><small>820 KB · Edited Mon</small></span>
+          <button class="del" type="button" aria-label="Delete q3-report.xlsx"></button>
+        </li>
+      </ul>
+
+      <div class="toast" role="status" aria-live="polite">
+        <span class="toast-text"></span>
+        <button class="toast-undo" type="button">Undo</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="toolbar" aria-label="Demo links">
+    <a href="https://www.instagram.com/arslanagayev.dev/">More animations</a>
+    <a href="?reel">▶ Reel mode</a>
+    <a href="https://github.com/arslanagayev/delete-file-animation">Source</a>
+  </nav>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
