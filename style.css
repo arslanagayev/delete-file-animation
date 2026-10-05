@@ -1,144 +1,167 @@
 .files {
   position: relative;
   width: min(480px, 100%);
-  padding: 22px 20px 20px;
-  border-radius: 26px;
-  background:
-    linear-gradient(160deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.02) 50%),
-    rgb(14 16 40 / 0.55);
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 30px 60px rgb(0 0 0 / 0.45);
-  backdrop-filter: blur(22px) saturate(140%);
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  padding: 24px 20px 20px;
+  border-radius: 36px;
+  background: var(--surface);
+  box-shadow: var(--clay-shadow);
 }
 
 .files-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 0 6px 14px;
+  padding: 0 8px 16px;
 }
 
-.files-head h2 { margin: 0; font-size: 18px; letter-spacing: -0.2px; }
-.files-count { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.files-head h2 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: -0.3px; }
 
-.file-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.files-count {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #ffe3d9;
+  color: var(--coral);
+  font-size: 12px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.file-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 
 .file {
   display: grid;
-  grid-template-columns: 44px 1fr auto;
+  grid-template-columns: 46px 1fr auto;
   align-items: center;
   gap: 14px;
-  padding: 12px;
-  border-radius: 18px;
-  background: rgb(255 255 255 / 0.04);
-  border: 1px solid rgb(255 255 255 / 0.07);
+  padding: 12px 12px 12px 14px;
+  border-radius: 24px;
+  background: var(--surface-2);
+  box-shadow:
+    0 8px 16px -10px rgb(150 90 60 / 0.35),
+    inset 0 -4px 8px rgb(214 170 140 / 0.25),
+    inset 0 4px 8px rgb(255 255 255 / 0.9);
   overflow: hidden;
 }
 
 .file[hidden] { display: none; }
 
+/* Puffy file badges: gradient body, inner highlight, folded corner. */
 .file-icon {
-  width: 44px;
-  height: 52px;
+  width: 46px;
+  height: 54px;
   display: grid;
   place-items: end center;
-  padding-bottom: 8px;
-  border-radius: 10px 16px 10px 10px;
-  font: 800 10px/1 var(--font);
+  padding-bottom: 9px;
+  border-radius: 14px 20px 14px 14px;
+  font: 900 10.5px/1 var(--font);
   letter-spacing: 0.6px;
   color: #fff;
   position: relative;
+  box-shadow:
+    0 8px 14px -6px var(--badge-glow),
+    inset 0 -5px 8px rgb(0 0 0 / 0.12),
+    inset 0 5px 8px rgb(255 255 255 / 0.45);
 }
 
-/* folded corner */
 .file-icon::before {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 0 0 0 6px;
-  background: rgb(255 255 255 / 0.35);
+  width: 15px;
+  height: 15px;
+  border-radius: 0 0 0 8px;
+  background: rgb(255 255 255 / 0.5);
 }
 
-.file-icon.pdf { background: linear-gradient(160deg, #ff6b81, #e2365b); }
-.file-icon.fig { background: linear-gradient(160deg, #a78bff, #6d4dff); }
-.file-icon.xls { background: linear-gradient(160deg, #3ee08f, #12a865); }
+.file-icon.pdf { --badge-glow: rgb(242 88 74 / 0.6); background: linear-gradient(170deg, var(--coral-light), var(--coral)); }
+.file-icon.fig { --badge-glow: rgb(143 124 240 / 0.6); background: linear-gradient(170deg, #b9a6ff, var(--lavender)); }
+.file-icon.xls { --badge-glow: rgb(63 185 131 / 0.6); background: linear-gradient(170deg, var(--mint-light), var(--mint)); }
 
-.file-meta { display: grid; gap: 4px; min-width: 0; }
-.file-meta b { font-size: 14.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.file-meta small { color: var(--muted); font-size: 12px; }
+.file-meta { display: grid; gap: 3px; min-width: 0; }
+.file-meta b { font-size: 15px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-meta small { color: var(--muted); font-size: 12.5px; font-weight: 600; }
 
+/* The clay delete button */
 .del {
-  --tone: var(--red);
+  --top: var(--coral-light);
+  --bottom: var(--coral);
+  --glow: rgb(242 88 74 / 0.55);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
-  padding: 0 14px 0 10px;
-  border-radius: 12px;
-  border: 1px solid color-mix(in srgb, var(--tone) 45%, transparent);
-  background: color-mix(in srgb, var(--tone) 12%, transparent);
-  color: color-mix(in srgb, var(--tone) 80%, white);
-  font: 600 13.5px/1 var(--font);
+  height: 42px;
+  padding: 0 16px 0 12px;
+  border: 0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--top), var(--bottom));
+  color: #fff;
+  font: 800 13.5px/1 var(--font);
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s, color 0.3s, border-color 0.3s;
+  box-shadow:
+    0 10px 18px -6px var(--glow),
+    inset 0 -4px 8px rgb(120 20 10 / 0.22),
+    inset 0 4px 6px rgb(255 255 255 / 0.45);
+  transition: transform 0.15s, filter 0.2s, box-shadow 0.2s, background 0.4s;
 }
 
-.del:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--tone) 22%, transparent);
-  box-shadow: 0 0 22px color-mix(in srgb, var(--tone) 35%, transparent);
+.del:hover:not(:disabled) { filter: brightness(1.05); transform: translateY(-1px); }
+.del:active:not(:disabled) {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 8px -4px var(--glow), inset 0 -2px 6px rgb(120 20 10 / 0.2), inset 0 6px 10px rgb(120 20 10 / 0.18);
 }
-
-.del:active:not(:disabled) { transform: scale(0.96); }
-.del:focus-visible { outline: 3px solid rgb(255 77 109 / 0.5); outline-offset: 2px; }
+.del:focus-visible { outline: 3px solid rgb(242 88 74 / 0.45); outline-offset: 3px; }
 .del:disabled { cursor: default; }
-.del.done { --tone: var(--green); }
+.del.done { --top: var(--mint-light); --bottom: var(--mint); --glow: rgb(63 185 131 / 0.55); }
 
-.can { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.can { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
 .can .lid { transform-box: fill-box; transform-origin: 100% 100%; }
 .can .paper { fill: #fff; stroke: none; opacity: 0; transform-box: fill-box; transform-origin: 50% 50%; }
 .del-label { min-width: 58px; text-align: left; }
 
 /* The file badge that flies into the bin */
 .fly-layer { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
-.fly-layer .file-icon { position: absolute; left: 0; top: 0; box-shadow: 0 12px 30px rgb(0 0 0 / 0.45); }
+.fly-layer .file-icon { position: absolute; left: 0; top: 0; }
 
 .toast {
   position: absolute;
   left: 50%;
-  bottom: -64px;
+  bottom: -70px;
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 10px 10px 10px 16px;
-  border-radius: 14px;
-  background: rgb(18 20 46 / 0.92);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 16px 40px rgb(0 0 0 / 0.45);
-  font-size: 13px;
+  padding: 9px 9px 9px 18px;
+  border-radius: 20px;
+  background: var(--cocoa);
+  color: #fff4ea;
+  box-shadow:
+    0 18px 30px -12px rgb(59 42 36 / 0.6),
+    inset 0 -4px 8px rgb(0 0 0 / 0.25),
+    inset 0 4px 6px rgb(255 255 255 / 0.12);
+  font-size: 13.5px;
+  font-weight: 700;
   white-space: nowrap;
-  translate: -50% 12px;
+  translate: -50% 14px;
+  scale: 0.9;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s, translate 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.3s, translate 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.toast.show { opacity: 1; translate: -50% 0; pointer-events: auto; }
+.toast.show { opacity: 1; translate: -50% 0; scale: 1; pointer-events: auto; }
 
 .toast-undo {
   border: 0;
-  border-radius: 9px;
-  padding: 8px 12px;
-  background: rgb(0 229 255 / 0.12);
-  color: var(--cyan);
-  font: 700 13px/1 var(--font);
+  border-radius: 13px;
+  padding: 9px 14px;
+  background: linear-gradient(180deg, var(--butter), #f0b93a);
+  color: var(--cocoa);
+  font: 900 13px/1 var(--font);
   cursor: pointer;
+  box-shadow: inset 0 -3px 6px rgb(150 90 0 / 0.25), inset 0 3px 5px rgb(255 255 255 / 0.5);
 }
 
-.toast-undo:hover, .toast-undo:focus-visible { background: rgb(0 229 255 / 0.22); outline: none; }
+.toast-undo:hover, .toast-undo:focus-visible { filter: brightness(1.06); outline: none; }
 
 /* Reel mode: leave room for the toast under the card */
-.reel .files { margin-bottom: 60px; }
+.reel .files { margin-bottom: 70px; }

@@ -1,19 +1,26 @@
-/* Shared look for every animation page: deep-space background, brand colours, demo layout. */
+/* Clay theme: warm cream background, puffy soft-3D surfaces, coral accent, rounded type. */
 :root {
-  --bg: #05060f;
-  --bg-2: #0b0d24;
-  --violet: #7b5cff;
-  --cyan: #00e5ff;
-  --pink: #ff5ecb;
-  --green: #22e39a;
-  --red: #ff4d6d;
-  --text: #f2f3ff;
-  --muted: #9aa0c7;
-  --glass: rgb(255 255 255 / 0.06);
-  --glass-border: rgb(255 255 255 / 0.14);
-  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
-  color-scheme: dark;
+  --cream: #f7ede2;
+  --surface: #fff8f0;
+  --surface-2: #fdf1e6;
+  --coral: #f2584a;
+  --coral-light: #ff8170;
+  --mint: #3fb983;
+  --mint-light: #7fdcae;
+  --lavender: #8f7cf0;
+  --butter: #ffd66b;
+  --cocoa: #3b2a24;
+  --text: #3b2a24;
+  --muted: #9a8073;
+  /* Clay = a soft drop shadow outside plus a light top and a darker bottom inside. */
+  --clay-shadow:
+    0 24px 48px -18px rgb(150 90 60 / 0.38),
+    0 8px 16px -8px rgb(150 90 60 / 0.22),
+    inset 0 -8px 16px rgb(214 170 140 / 0.28),
+    inset 0 8px 14px rgb(255 255 255 / 0.95);
+  --font: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  --mono: "DM Mono", "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -24,10 +31,10 @@ body {
   font-family: var(--font);
   color: var(--text);
   background:
-    radial-gradient(60vmax 40vmax at 12% 18%, rgb(123 92 255 / 0.28), transparent 60%),
-    radial-gradient(50vmax 40vmax at 88% 82%, rgb(0 229 255 / 0.16), transparent 60%),
-    radial-gradient(40vmax 30vmax at 75% 5%, rgb(255 94 203 / 0.12), transparent 60%),
-    linear-gradient(160deg, var(--bg-2), var(--bg) 65%);
+    radial-gradient(50vmax 40vmax at 10% 12%, #ffd9c7, transparent 60%),
+    radial-gradient(45vmax 40vmax at 92% 88%, #d4f1e0, transparent 60%),
+    radial-gradient(35vmax 28vmax at 85% 5%, #fff1b8, transparent 60%),
+    var(--cream);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -36,7 +43,7 @@ body {
   min-height: 100%;
   display: grid;
   place-items: center;
-  padding: 48px 16px 96px;
+  padding: 48px 16px 120px;
 }
 
 .toolbar {
@@ -45,12 +52,11 @@ body {
   bottom: 20px;
   translate: -50% 0;
   display: flex;
-  gap: 8px;
+  gap: 6px;
   padding: 6px;
   border-radius: 999px;
-  background: rgb(10 12 30 / 0.7);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
+  background: var(--surface);
+  box-shadow: var(--clay-shadow);
 }
 
 .toolbar a {
@@ -58,11 +64,12 @@ body {
   color: var(--text);
   text-decoration: none;
   font-size: 13px;
-  padding: 8px 14px;
+  font-weight: 700;
+  padding: 9px 15px;
   border-radius: 999px;
 }
 
-.toolbar a:hover, .toolbar a:focus-visible { background: rgb(255 255 255 / 0.08); outline: none; }
+.toolbar a:hover, .toolbar a:focus-visible { background: #ffe3d9; color: var(--coral); outline: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }

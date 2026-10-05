@@ -21,6 +21,7 @@ Plain **HTML, CSS and JavaScript**: no frameworks, no build step, no dependencie
 - Pure SVG trash icon: the lid, sheet and body are animated separately
 - Undo restores the row with its own entrance animation
 - Real `<button>` elements with labels, `aria-live` toast, `prefers-reduced-motion` support
+- Clay look without images: every puffy surface is one drop shadow plus a light inner top and a darker inner bottom (`box-shadow` with `inset`). Font: Nunito
 
 ## The key code
 
@@ -47,6 +48,12 @@ Copy `index.html`, `style.css` and `script.js`. The component itself has no depe
 ## Reel mode
 
 Add `?reel` to the URL and the page becomes a self-playing 1080×1920 video stage: a title, the animation driven by a scripted cursor, a code excerpt and an end card, on a loop. Open it on a phone and use the built-in screen recorder to get an Instagram reel. `?autoplay` loops the scripted demo without the frame.
+
+Options:
+
+- `?reel&ratio=4x5`: a 1080×1350 stage for Instagram carousel videos
+- `?reel&nocode`: hide the code excerpt
+- `?reel&delay=3000`: wait 3 seconds before the first run (time to start the recorder)
 
 ## Run locally
 
